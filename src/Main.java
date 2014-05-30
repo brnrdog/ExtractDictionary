@@ -1,4 +1,5 @@
 import parser.AdjectivePTBParser;
+import parser.AdverbPTBParser;
 import parser.AllPTBParser;
 import parser.PTBParser;
 import parser.VerbPTBParser;
@@ -12,7 +13,7 @@ public class Main {
 
         WordsTree tree = new WordsTree();
 
-        PTBParser parser = new AdjectivePTBParser("ptb-flat.txt");
+        PTBParser parser = new AllPTBParser("ptp-flat-test.txt");
 
         parser.parse(tree);
 

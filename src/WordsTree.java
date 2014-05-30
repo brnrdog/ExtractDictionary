@@ -1,5 +1,7 @@
 import java.util.*;
 
+import similarity.WordSimilarity;
+
 /**
  * Created by bernardog on 28/05/14.
  */
@@ -28,6 +30,7 @@ public class WordsTree extends TreeMap<String, String> {
             if (groups.size() > 0) {
                 if(!isWordGroup(entry.getValue())){
                     for (int i = 0; i < groups.size(); i++) {
+                    	if (WordSimilarity.isSimilar(groups.get(i).getWords().get(0), entry.getValue()));
                         if (groups.get(i).isSimilar(entry.getValue())) {
                             groups.get(i).getWords().add(entry.getValue());
                         }

@@ -10,7 +10,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import parser.AdjectivePTBParser;
-import parser.SubstantivePTBParser;
 
 public class AdjectivePTBParserTest {
 

@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import similarity.WordSimilarity;
+
 /**
  * Created by bernardog on 28/05/14.
  */
@@ -23,38 +25,12 @@ public class WordGroup {
 
     public boolean isSimilar(String s){
         String word = this.words.get(0);
-        if (computeEditDistance(word, s) == 1)
-            return true;
-        else
-            return false;
-
-    }
-
-    public static int computeEditDistance(String s1, String s2) {
-        s1 = s1.toLowerCase();
-        s2 = s2.toLowerCase();
-
-        int[] costs = new int[s2.length() + 1];
-        for (int i = 0; i <= s1.length(); i++) {
-            int lastValue = i;
-            for (int j = 0; j <= s2.length(); j++) {
-                if (i == 0)
-                    costs[j] = j;
-                else {
-                    if (j > 0) {
-                        int newValue = costs[j - 1];
-                        if (s1.charAt(i - 1) != s2.charAt(j - 1))
-                            newValue = Math.min(Math.min(newValue, lastValue),
-                                    costs[j]) + 1;
-                        costs[j - 1] = lastValue;
-                        lastValue = newValue;
-                    }
-                }
+        if((s.length() - word.length()) < 1 || (s.length() - word.length()) > 1) {
+            if (WordSimilarity.compute(word, s) == 1) {
+                return true;	
             }
-            if (i > 0)
-                costs[s2.length()] = lastValue;
         }
-        return costs[s2.length()];
+        return false;
     }
 
 }
