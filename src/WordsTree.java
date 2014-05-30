@@ -11,11 +11,6 @@ public class WordsTree extends TreeMap<String, String> {
         this.groups = new ArrayList<WordGroup>();
     }
 
-    public WordsTree(Comparator<? super String> comparator) {
-        super(comparator);
-        this.groups = new ArrayList<WordGroup>();
-    }
-
     public boolean isWordGroup(String word){
         for (WordGroup w : groups){
             for (String s : w.getWords()){
@@ -44,16 +39,6 @@ public class WordsTree extends TreeMap<String, String> {
             } else {
                 groups.add(new WordGroup(entry.getValue()));
             }
-
-            /*
-            for (Iterator<WordGroup> it = groups.iterator(); it.hasNext();) {
-                WordGroup group = it.next();
-                if (group.isSimilar(entry.getValue())) {
-                    group.getWords().add(entry.getValue());
-                } else {
-                    groups.add(new WordGroup(entry.getValue()));
-                }
-            } */
         }
     }
 

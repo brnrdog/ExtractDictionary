@@ -1,7 +1,10 @@
+import parser.AdjectivePTBParser;
+import parser.AllPTBParser;
+import parser.PTBParser;
+import parser.VerbPTBParser;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Map;
-import java.util.TreeMap;
 
 public class Main {
 
@@ -9,9 +12,9 @@ public class Main {
 
         WordsTree tree = new WordsTree();
 
-        PTBParser parser = new PTBParser("ptb-flat.txt");
+        PTBParser parser = new AdjectivePTBParser("ptb-flat.txt");
 
-        parser.parseVerbs(tree);
+        parser.parse(tree);
 
         /*for (Map.Entry<String, String> entry : tree.entrySet()) {
             System.out.println(entry.getKey());
