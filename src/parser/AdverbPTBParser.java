@@ -1,5 +1,7 @@
 package parser;
 
+import DisjointSet.DisjointSet;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -29,7 +31,8 @@ public class AdverbPTBParser implements PTBParser{
                         while (word.charAt(word.length() - 1) == ')') {
                             word = word.substring(0, word.length() - 1);
                         }
-                        tree.put(word,word);
+                        DisjointSet ds = new DisjointSet(word);
+                        tree.put(word, ds);
                     }
                 }
             }

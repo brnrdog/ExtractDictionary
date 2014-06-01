@@ -23,7 +23,7 @@ public class WordSimilarityTest {
 	@Test
 	public void computeTest() {
 		int computed = WordSimilarity.compute("bold", "bald");
-		assertEquals(1, computed);
+        assertEquals(1, computed);
 	}
 
 }

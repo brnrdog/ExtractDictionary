@@ -1,57 +1,60 @@
+import java.lang.reflect.Array;
 import java.util.*;
 
+import DisjointSet.DisjointSet;
+import com.sun.tools.doclets.internal.toolkit.util.SourceToHTMLConverter;
 import similarity.WordSimilarity;
 
 /**
  * Created by bernardog on 28/05/14.
  */
-public class WordsTree extends TreeMap<String, String> {
+public class WordsTree extends TreeMap<String, DisjointSet> {
 
-    private ArrayList<WordGroup> groups;
-
-    public WordsTree() {
-        this.groups = new ArrayList<WordGroup>();
-    }
-
-    public boolean isWordGroup(String word){
-        for (WordGroup w : groups){
-            for (String s : w.getWords()){
-                if (s.equals(word)){
-                    return true;
-                }
+    public void wordMakeSets(){
+        System.out.println(">> AGRUPANDO PALAVRAS POR SEMELHANÇA... AGUARDE.");
+        TreeMap<Integer, ArrayList<String>> tree = new TreeMap<Integer, ArrayList<String>>();
+        for (Map.Entry<String, DisjointSet> entry : this.entrySet()) {
+            if (tree.get(entry.getKey().length()) == null) {
+                tree.put(entry.getKey().length(), new ArrayList<String>());
             }
+            tree.get(entry.getKey().length()).add(entry.getKey());
         }
-        return false;
-    }
+        for (Map.Entry<Integer, ArrayList<String>> entry : tree.entrySet()) {
+            ArrayList<String> possibleSimilarities= new ArrayList<String>();
+            if (tree.get(entry.getKey() -1) != null) {
+                possibleSimilarities.addAll(tree.get(entry.getKey() - 1));
+            }
+            if (tree.get(entry.getKey() + 1 ) != null) {
+                possibleSimilarities.addAll(tree.get(entry.getKey() + 1));
+            }
+            for (String s : entry.getValue()) {
+                for (String possible : possibleSimilarities) {
 
-    public void groupWords(){
-        for (Map.Entry<String, String> entry : this.entrySet()) {
-
-            if (groups.size() > 0) {
-                if(!isWordGroup(entry.getValue())){
-                    for (int i = 0; i < groups.size(); i++) {
-                    	if (WordSimilarity.isSimilar(groups.get(i).getWords().get(0), entry.getValue()));
-                        if (groups.get(i).isSimilar(entry.getValue())) {
-                            groups.get(i).getWords().add(entry.getValue());
+                    if (WordSimilarity.isSimilar(s, possible)) {
+                        if (!(this.get(possible).getReference() == this.get(s).getReference())) {
+//                            this.get(possible).setReference(this.get(s));
+                            this.get(possible).union(this.get(s));
+//                            System.out.println(s + " " + possible);
                         }
                     }
-                    if(!isWordGroup(entry.getValue())){
-                        groups.add(new WordGroup(entry.getValue()));
-                    }
                 }
-            } else {
-                groups.add(new WordGroup(entry.getValue()));
             }
         }
     }
 
-    public void printGroups(){
-        for (WordGroup group : groups) {
-            if(group.getWords().size() > 1){
-                System.out.println("======GRUPO====");
-                for (String s : group.getWords()) {
-                    System.out.println(s);
-                }
+    public void printSimilarities(){
+        System.out.println(">> IMPRIMINDO PALAVRAS POR ORDEM DE SEMELHANÇA... AGUARDE.");
+        TreeMap<String, ArrayList<String>> treeSupport = new TreeMap<String, ArrayList<String>>();
+        for (Map.Entry<String, DisjointSet> entry : this.entrySet()) {
+            if (treeSupport.get(entry.getValue().getReference().getWord()) == null) {
+                treeSupport.put(entry.getValue().getReference().getWord(), new ArrayList<String>());
+            }
+            treeSupport.get(entry.getValue().getReference().getWord()).add(entry.getKey());
+        }
+        for (Map.Entry<String, ArrayList<String>> entry : treeSupport.entrySet()) {
+            System.out.println("*****************");
+            for (String s : entry.getValue()) {
+                System.out.println(s);
             }
         }
     }

@@ -1,5 +1,7 @@
 package parser;
 
+import DisjointSet.DisjointSet;
+
 import java.io.*;
 import java.util.Scanner;
 import java.util.TreeMap;
@@ -32,7 +34,8 @@ public class AllPTBParser implements PTBParser{
                     // como valor como chave. A vantagem de usar chave
                     // é que ele já organiza comparando as strings de
                     // um jeito otimizado.
-                    tree.put(s, s);
+                    DisjointSet ds = new DisjointSet(s);
+                    tree.put(s, ds);
                 }
             }
 

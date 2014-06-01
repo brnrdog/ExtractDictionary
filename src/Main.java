@@ -1,11 +1,8 @@
-import parser.AdjectivePTBParser;
-import parser.AdverbPTBParser;
-import parser.AllPTBParser;
-import parser.PTBParser;
-import parser.VerbPTBParser;
+import parser.*;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Map;
 
 public class Main {
 
@@ -13,13 +10,14 @@ public class Main {
 
         WordsTree tree = new WordsTree();
 
-        PTBParser parser = new AllPTBParser("ptp-flat-test.txt");
+//        PTBParser parser = new AllPTBParser("ptp-flat-test.txt");
+        PTBParser parser = new VerbPTBParser("ptb-flat.txt");
 
         parser.parse(tree);
 
-        /*for (Map.Entry<String, String> entry : tree.entrySet()) {
-            System.out.println(entry.getKey());
-        }*/
+//        for (Map.Entry<String, String> entry : tree.entrySet()) {
+//            System.out.println(entry.getKey());
+//        }
 
         /*tree.put("pray","pray");
         tree.put("rise","rise");
@@ -30,7 +28,8 @@ public class Main {
         tree.put("rint","rint");
         tree.put("trim","trim");
         */
-        tree.groupWords();
-        tree.printGroups();
+        tree.wordMakeSets();
+        tree.printSimilarities();
+//        tree.printGroups();
     }
 }

@@ -3,12 +3,10 @@ package similarity;
 public class WordSimilarity {
 	
     public static boolean isSimilar(String s, String s2){
-        if((s.length() - s2.length()) < 1 || (s.length() - s2.length()) > 1) {
-            if (compute(s2, s) == 1) {
-                return true;	
-            }
+        if (Math.abs(s.length() - s2.length()) > 1 ) {
+            return false;
         }
-        return false;
+        return compute(s, s2) == 1;
     }
 
     public static int compute(String s1, String s2) {
