@@ -28,9 +28,9 @@ public class AllPTBParserTest {
 	
 	@Test
 	public void testParse() throws IOException{
-		TreeMap<String, String> tree = new TreeMap<String, String>();
+		TreeMap<String, DisjointSet> tree = new TreeMap<String, DisjointSet>();
 		parser.parse(tree);
-		assertEquals(tree.get("steady"), "steady");
+		assertEquals(tree.get("steady").getWord(), "steady");
 	}
 
 	@Test

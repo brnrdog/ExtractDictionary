@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import java.io.IOException;
 import java.util.TreeMap;
 
+import DisjointSet.DisjointSet;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -27,9 +28,9 @@ public class AdverbPTBParserTest {
 	
 	@Test
 	public void testParse() throws IOException{
-		TreeMap<String, String> tree = new TreeMap<String, String>();
+		TreeMap<String, DisjointSet> tree = new TreeMap<String, DisjointSet>();
 		parser.parse(tree);
-		assertEquals(tree.get("mistakenly"), "mistakenly");
+		assertEquals(tree.get("mistakenly").getWord(), "mistakenly");
 	}
 
 	@Test
