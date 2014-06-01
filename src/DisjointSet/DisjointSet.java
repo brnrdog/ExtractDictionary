@@ -32,6 +32,7 @@ public class DisjointSet {
             other.getReference().setReference(this.getReference());
             this.getReference().setDegree(other.getDegree());
         }
+        // Incrementa o grau
         if (this.getDegree() == other.getDegree()) {
             this.getReference().increaseDegree();
             other.getReference().increaseDegree();
