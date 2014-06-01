@@ -2,7 +2,6 @@ import java.lang.reflect.Array;
 import java.util.*;
 
 import DisjointSet.DisjointSet;
-import com.sun.tools.doclets.internal.toolkit.util.SourceToHTMLConverter;
 import similarity.WordSimilarity;
 
 /**
@@ -11,7 +10,7 @@ import similarity.WordSimilarity;
 public class WordsTree extends TreeMap<String, DisjointSet> {
 
     public void wordMakeSets(){
-        System.out.println(">> AGRUPANDO PALAVRAS POR SEMELHANÇA... AGUARDE.");
+        System.out.println(">> AGRUPANDO PALAVRAS POR SEMELHANCA... AGUARDE.");
         TreeMap<Integer, ArrayList<String>> tree = new TreeMap<Integer, ArrayList<String>>();
         for (Map.Entry<String, DisjointSet> entry : this.entrySet()) {
             if (tree.get(entry.getKey().length()) == null) {
@@ -43,7 +42,7 @@ public class WordsTree extends TreeMap<String, DisjointSet> {
     }
 
     public void printSimilarities(){
-        System.out.println(">> IMPRIMINDO PALAVRAS POR ORDEM DE SEMELHANÇA... AGUARDE.");
+        System.out.println(">> IMPRIMINDO PALAVRAS POR ORDEM DE SEMELHANCA... AGUARDE.");
         TreeMap<String, ArrayList<String>> treeSupport = new TreeMap<String, ArrayList<String>>();
         for (Map.Entry<String, DisjointSet> entry : this.entrySet()) {
             if (treeSupport.get(entry.getValue().getReference().getWord()) == null) {

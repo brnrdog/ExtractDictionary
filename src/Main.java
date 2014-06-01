@@ -1,4 +1,3 @@
-import com.sun.tools.doclets.internal.toolkit.util.SourceToHTMLConverter;
 import parser.*;
 
 import java.io.FileNotFoundException;
@@ -16,12 +15,12 @@ public class Main {
         boolean on = true;
 
         while(on) {
-            System.out.println("BEM-VINDO AO EXTRACTDICTIONARY. POR FAVOR, ESCOLHA UMA DAS OPÇÕES:");
-            System.out.println("1 - AGRUPAR E IMPRIMIR TODAS AS PALAVRAS POR SEMELHANÇA (TEMPO MÉDIO 4MIN)");
-            System.out.println("2 - AGRUPAR E IMPRIMIR TODOS OS VERBOS POR SEMELHANÇA (TEMPO MÉDIO 10SEG)");
-            System.out.println("3 - AGRUPAR E IMPRIMIR TODOS OS SUBSTANTIVOS POR SEMELHANÇA (TEMPO MÉDIO 1MIN 10SEG)");
-            System.out.println("4 - AGRUPAR E IMPRIMIR TODOS OS ADJETIVOS POR SEMELHANÇA (TEMPO MÉDIO 10SEG)");
-            System.out.println("5 - AGRUPAR E IMPRIMIR TODOS OS ADVÉRBIOS POR SEMELHANÇA (TEMPO MÉDIO 3SEG)");
+            System.out.println("BEM-VINDO AO EXTRACTDICTIONARY. POR FAVOR, ESCOLHA UMA DAS OPCOES:");
+            System.out.println("1 - AGRUPAR E IMPRIMIR TODAS AS PALAVRAS POR SEMELHANCA (TEMPO MEDIO DE 4 ~ 8 MINUTOS)");
+            System.out.println("2 - AGRUPAR E IMPRIMIR TODOS OS VERBOS POR SEMELHANCA (TEMPO MEDIO 10 ~ 20 SEGUNDOS)");
+            System.out.println("3 - AGRUPAR E IMPRIMIR TODOS OS SUBSTANTIVOS POR SEMELHANCA (TEMPO MEDIO 1 ~ 4 MINUTOS)");
+            System.out.println("4 - AGRUPAR E IMPRIMIR TODOS OS ADJETIVOS POR SEMELHANCA (TEMPO MEDIO 10 ~ 20 SEGUNDOS)");
+            System.out.println("5 - AGRUPAR E IMPRIMIR TODOS OS ADVERBIOS POR SEMELHANCA (TEMPO MEDIO 3 ~ 5 SEGUNDOS)");
             System.out.println("6 - SAIR DO PROGRAMA");
 
             String opt = scan.nextLine();
@@ -56,7 +55,7 @@ public class Main {
                     tree.printSimilarities();
                     break;
                 case '5':
-                    System.out.println("ESCOLHIDO [ADVÉRBIOS]");
+                    System.out.println("ESCOLHIDO [ADVERBIOS]");
                     parser = new AdverbPTBParser(file);
                     parser.parse(tree);
                     tree.wordMakeSets();
@@ -66,7 +65,7 @@ public class Main {
                     on = false;
                     break;
                 default:
-                    System.out.println("ERRO: DIGITE UMA OPÇÃO VÁLIDA!");
+                    System.out.println("ERRO: DIGITE UMA OPCAO VALIDA!");
                     break;
             }
         }

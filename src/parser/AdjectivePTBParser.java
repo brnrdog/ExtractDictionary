@@ -20,7 +20,7 @@ public class AdjectivePTBParser implements PTBParser{
     }
 
     public void parse(TreeMap tree) throws IOException {
-
+    	System.out.println(">> EXTRAINDO TODOS OS ADJETIVOS");
         BufferedReader br = new BufferedReader(file);
         String line = null;
 

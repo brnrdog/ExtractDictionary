@@ -18,6 +18,7 @@ public class SubstantivePTBParser implements PTBParser{
 	
 	@Override
     public void parse(TreeMap tree) throws IOException {
+		System.out.println(">> EXTRAINDO TODOS OS SUBSTANTIVOS");
         BufferedReader br = new BufferedReader(file);
         String line = null;
         while((line = br.readLine()) != null) {

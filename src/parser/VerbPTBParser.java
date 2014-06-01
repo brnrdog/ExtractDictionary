@@ -21,7 +21,7 @@ public class VerbPTBParser implements PTBParser{
 
     @Override
     public void parse(TreeMap tree) throws IOException {
-
+    	System.out.println(">> EXTRAINDO TODOS OS VERBOS");
         BufferedReader br = new BufferedReader(file);
         String line = null;
 

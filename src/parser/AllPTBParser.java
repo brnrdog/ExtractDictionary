@@ -18,6 +18,7 @@ public class AllPTBParser implements PTBParser{
     }
 
     public void parse(TreeMap tree) throws IOException {
+    	System.out.println(">> EXTRAINDO TODAS AS PALAVRAS");
         BufferedReader br = new BufferedReader(file);
         String line = null;
         while((line = br.readLine()) != null) {
